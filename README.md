@@ -20,7 +20,7 @@ Simple browser mini game in React.js, SCSS, Node.js
 - No Redux. At least for now.
 
 ##### I would like to ask you be more condescending for this project.
-###### I created it withing 7 hours, so please don't punish me too much. 
+###### I created it withing 7 hours, so please don't punish me too much. I haven't added Redux, because it takes some time to do routine job(creating actions, reducers, connecting functions), I know how to work with it and if I have more time, I add it. If u ask me to add it, I will.
 ###### I was enjoyed by creating something like that, so even if you realise, that's unacceptable code, let me know and at least give please advanced feedback. Thx for attention) 
  
 
