@@ -1,0 +1,16 @@
+.button {
+  font-size: 16px;
+  padding: 1em 2em;
+  border: none;
+  box-shadow: 0 4px 14px 1px rgba(7,0,79,.1);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    box-shadow: none;
+  }
+}
