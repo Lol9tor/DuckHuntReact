@@ -1,0 +1,10 @@
+.score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: left;
+
+  >div {
+    margin-bottom: 10px;
+  }
+}

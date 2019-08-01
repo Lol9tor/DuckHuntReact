@@ -1,0 +1,24 @@
+.sprite {
+  position: absolute;
+  display: none;
+  width: 86px;
+  height: 64px;
+  background-image: url('../../assets/images/duck-sprite.svg');
+}
+
+.duck-state-1 {
+  background-position: 0 0;
+  display: block;
+}
+
+.duck-state-2 {
+  background-position: -86px 0px;
+  display: block;
+}
+
+.duck-smashed {
+  background-position: -192px 0px;
+  width: 60px;
+  display: block;
+}
+

@@ -1,17 +1,24 @@
 import React from 'react';
+import socket from "./socketClient";
 
+import * as config from './gameConfig';
 import Header from './components/Header';
 import Button from './components/Button';
+import Field from './components/Field';
 
 import styles from './App.module.scss';
 
 function App() {
+  /*function startGame() {
+    socket.emit('startGame');
+  }*/
   return (
     <div className={styles.App}>
       <Header />
-      <div>
-        <Button text="Start"/>
-      </div>  
+      <Field config={config} />
+      {/*<div>
+        <Button text="Start Game" onClick={startGame}/>
+      </div>  */}
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.field {
+  border: solid 1px #ccc;
+  margin: 0 auto;
+  position: relative;
+  cursor: url('../../assets/images/crosshair.png'), auto;
+  background: url('../../assets/images/duck-hunt-bg.png');
+  background-repeat: no-repeat;
+  background-position: 0 80px;
+  background-size: cover;
+  margin-bottom: 30px;
+  overflow: hidden;
+}

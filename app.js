@@ -1,5 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const http = require("http");
+const socketIo = require("socket.io");
+
+const simpleGameLogic = require("./server/simpleGameLogic");
 
 const PORT = 3001;
 
@@ -16,13 +20,24 @@ app.use(function(req, res, next) {
 });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/', express.static('./duck_hunt/build/'));
-// app.use('/*', express.static('/dist/'));
 app.use(function(req, res) {
 	res.status(404).send({url: req.originalUrl + ' not found'})
 });
 
-app.listen(PORT, () => {
+const server = http.createServer(app);
+const io = socketIo(server);
+
+io.on('connection', (socket) => {
+	// socket.on('startGame', () => {
+		simpleGameLogic(socket);
+	// });
+
+	socket.on('disconnect', () => {
+		console.log('client is disconnected');
+	})
+});
+
+server.listen(PORT, () => {
 	console.log(`Started up at port ${PORT}`);
 });
 
