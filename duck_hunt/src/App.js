@@ -1,9 +1,8 @@
 import React from 'react';
-import socket from "./socketClient";
 
-import * as config from './gameConfig';
+import * as config from './config/gameConfig';
 import Header from './components/Header';
-import Button from './components/Button';
+// import Button from './components/Button';
 import Field from './components/Field';
 
 import styles from './App.module.scss';

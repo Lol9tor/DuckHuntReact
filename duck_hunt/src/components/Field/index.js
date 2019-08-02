@@ -34,36 +34,42 @@ class Field extends Component {
     this.tick = 0;
   }
   componentDidMount() {
-    socket.on('startRound', ({settings}) => {
-      console.log(settings);
-      const {position, speed, direction} = settings;
-      this.setState({
-        duckPosition: this.getDuckPosition(position, speed, direction),
-        tickSpeed: speed,
-        direction: direction,
-      }, () => {
-        this.startDuckAnimation(speed);
-      });
-    });
-    socket.on('endRound', ({isRoundFinished, isRichTarget, score}) => {
-      duckSound.pause();
-      cancelAnimationFrame(this.frame);
-      this.tick = 0;
-      this.setState((prev)=>({
-        score: score,
-      }));
-      if (isRichTarget){
-        setTimeout(() => {
-          this.resetRoundState();
-        }, this.props.config.SHOW_SMASHED_DUCK);
-      } else {
-        this.resetRoundState();
-      }
-    });
+    socket.on('startRound', this.startRound);
+    socket.on('endRound', this.endRound);
   }
   componentWillUnmount() {
     cancelAnimationFrame(this.frame);
+    socket.off('startRound', this.startRound);
+    socket.off('endRound', this.endRound);
   }
+
+  startRound = ({settings}) => {
+    console.log(settings);
+    const {position, speed, direction} = settings;
+    this.setState({
+      duckPosition: this.getDuckPosition(position, speed, direction),
+      tickSpeed: speed,
+      direction: direction,
+    }, () => {
+      this.startDuckAnimation(speed);
+    });
+  };
+
+  endRound = ({isRoundFinished, isRichTarget, score}) => {
+    duckSound.pause();
+    cancelAnimationFrame(this.frame);
+    this.tick = 0;
+    this.setState((prev)=>({
+      score: score,
+    }));
+    if (isRichTarget){
+      setTimeout(() => {
+        this.resetRoundState();
+      }, this.props.config.SHOW_SMASHED_DUCK);
+    } else {
+      this.resetRoundState();
+    }
+  };
 
   resetRoundState = () => {
     this.setState({
