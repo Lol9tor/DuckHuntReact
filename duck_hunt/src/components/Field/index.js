@@ -26,7 +26,7 @@ const defaultState = {
 };
 
 class Field extends Component {
-  constructor(){
+  constructor(props){
     super();
     this.state = {
       ...defaultState,
@@ -40,15 +40,18 @@ class Field extends Component {
   componentDidMount() {
     socket.on('startRound', this.startRound);
     socket.on('endRound', this.endRound);
-    console.log(this.props);
   }
   componentWillUnmount() {
     cancelAnimationFrame(this.frame);
     socket.off('startRound', this.startRound);
     socket.off('endRound', this.endRound);
   }
+  componentWillReceiveProps(nextProps, nextContext) {
+    console.log('new props',this.props);
+  }
 
   startRound = ({settings}) => {
+    // this.props.actions.startRound({settings});
     console.log(settings);
     const {position, speed, direction} = settings;
     this.setState({
@@ -61,6 +64,7 @@ class Field extends Component {
   };
 
   endRound = ({isRoundFinished, isRichTarget, score}) => {
+    // this.props.actions.endRound({isRoundFinished, isRichTarget, score});
     duckSound.pause();
     cancelAnimationFrame(this.frame);
     this.tick = 0;

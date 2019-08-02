@@ -4,15 +4,16 @@ export const startGame = () => (dispatch, getState) => {
 
 };
 
-export const startRound = () => (dispatch, getState) => {
+export const startRound = (data) => (dispatch, getState) => {
 	dispatch({
 		type: START_ROUND,
-		payload: {settings:{}}
+		payload: data,
 	})
 };
 
-export const endRound = () => (dispatch, getState) => {
+export const endRound = (data) => (dispatch, getState) => {
 	dispatch({
 		type: END_ROUND,
+		payload: data,
 	})
 };

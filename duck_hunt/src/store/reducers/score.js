@@ -14,7 +14,7 @@ export default function score(state=initialState, action) {
 		case END_ROUND:
 			return {
 				...state,
-				...action.payload,
+				...action.payload.score,
 			};
 		default:
 			return state;
