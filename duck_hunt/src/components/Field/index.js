@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import socket from "../../socketClient";
+
+import { startGame, startRound, endRound } from '../../store/actions';
 
 import styles from './field.module.scss';
 import Sprite from "../Sprite";
@@ -36,6 +40,7 @@ class Field extends Component {
   componentDidMount() {
     socket.on('startRound', this.startRound);
     socket.on('endRound', this.endRound);
+    console.log(this.props);
   }
   componentWillUnmount() {
     cancelAnimationFrame(this.frame);
@@ -138,4 +143,16 @@ Field.propTypes = {
   config: PropTypes.object.isRequired,
 };
 
-export default Field;
+const mapStateToProps = (state, props) => ({
+  score: state.score,
+  currentRound: state.rounds.current,
+  rounds: state.rounds.list,
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators({ startRound, endRound }, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Field);

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './score.module.scss';
@@ -15,4 +15,4 @@ Score.propTypes = {
 	total: PropTypes.number.isRequired,
 };
 
-export default Score;
+export default memo(Score);

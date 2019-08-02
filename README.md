@@ -17,7 +17,7 @@ Simple browser mini game in React.js, SCSS, Node.js
 
 - Duck flies a bit over borders
 - There is no left, up-left, down-left direction(it's because I need to mirrorly rotate sprite)
-- No Redux. At least for now.
+- No full Redux. Just add base logic.
 
 ##### I would like to ask you be more condescending for this project.
 ###### I created it withing 7 hours, so please don't punish me too much. I haven't added Redux, because it takes some time to do routine job(creating actions, reducers, connecting functions), I know how to work with it and if I have more time, I add it. If u ask me to add it, I will.
