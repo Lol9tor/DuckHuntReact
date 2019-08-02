@@ -1,5 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
+import store from './store/createStore';
 import * as config from './config/gameConfig';
 import Header from './components/Header';
 // import Button from './components/Button';
@@ -12,13 +14,15 @@ function App() {
     socket.emit('startGame');
   }*/
   return (
-    <div className={styles.App}>
-      <Header />
-      <Field config={config} />
-      {/*<div>
+    <Provider store={store}>
+      <div className={styles.App}>
+        <Header />
+        <Field config={config} />
+        {/*<div>
         <Button text="Start Game" onClick={startGame}/>
       </div>  */}
-    </div>
+      </div>
+    </Provider>
   );
 }
 

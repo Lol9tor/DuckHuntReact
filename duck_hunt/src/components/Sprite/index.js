@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 
 import styles from './sprite.module.scss';
 
+const emptyFn = () => {};
+
 const Sprite = ({type, position, onClick}) => {
+	const clickHandler = type === "duck-smashed"? emptyFn: onClick;
   return <div
 	  className={`${styles.sprite} ${styles[type]||''}`}
 	  style={{transform: `translate(${position.x}px, ${position.y}px)`}}
-	  onClick={onClick}
+	  onClick={clickHandler}
   />
 };
 
